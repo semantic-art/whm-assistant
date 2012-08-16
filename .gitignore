@@ -1,6 +1,6 @@
 */logs/log-*.php
 */logs/!index.html
-*/cache/*
+ci_contents/cache/*
 */cache/!index.html
 */config/*
 *.DS_Store
