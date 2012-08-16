@@ -13,6 +13,14 @@ Installation
 Download and place folder on server (apache & php5+). To access admin goto /admin eg semanticart.com.au/whm-assistant/admin
 
 
+Adding a website
+----------------
+
+Your companies website should be placed in the folder: ./ci_contents/views/public/
+
+Place all your websites files there. Remove the index.html file to delete the under construction notice. The pin for the under construction notice is '1989'
+
+
 Sending invoices
 ----------------
 
