@@ -1,0 +1,19 @@
+/* TEAM */
+	
+	Web designer: 
+	Twitter: @
+	From:
+	
+	Web developer: 
+	Twitter: @
+	From:
+
+/* SITE */
+	Last update: 01/04/2012
+	Language: English
+	Doctype: HTML5
+	IDE: Coda 2.0
+	
+/* BOILERPLATE */
+	Package: Boilerplate
+	Creator: Brad Martin - (@bradleyrmartin)

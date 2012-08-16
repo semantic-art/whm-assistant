@@ -1,0 +1,432 @@
+
+
+
+/*
+------------------------------------------------------------
+Typography
+------------------------------------------------------------ */
+
+
+/* General
+------------------------------------------------------------------------------- */
+textarea,
+body {
+	font: 											13px/1.5 Helvetica, Arial, 'Liberation Sans', FreeSans, sans-serif;
+}
+
+a:focus {
+	outline: 										1px dotted invert;
+}
+
+hr {
+	border-color:									#ccc;
+	border-style: 									solid;
+	border-width: 									1px 0 0;
+	clear: 											both;
+	height: 										0;
+}
+
+a {
+	color: 											#000;
+	text-decoration: 								none;
+}
+
+a:hover {
+  color:											#333;
+}
+
+textarea,
+body {
+	color: 											#333;
+	font-size: 										11px;
+}
+
+
+/* Headings
+--------------------------------------------------------------------------------*/
+
+h1 {
+	font-size: 										25px;
+}
+
+h2 {
+	font-size: 										23px;
+}
+
+h3 {
+	font-size: 										21px;
+}
+
+h4 {
+	font-size: 										19px;
+}
+
+h5 {
+	font-size: 										17px;
+}
+
+h6 {
+	font-size: 										15px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	line-height:									1.2em; 
+	margin-bottom:									.3em;
+}
+
+h2 {
+	margin-top:										1em;
+}
+
+h5 {
+	font-size:										1.2em;
+}
+
+h6 {
+	font-size:										1em;
+	text-transform:									uppercase;
+}
+
+h1 a {
+	font-weight:									normal;
+}
+
+/* Spacing
+--------------------------------------------------------------------------------*/
+
+ol {
+	list-style: 									decimal;
+}
+
+ul {
+	list-style: 									square;
+}
+
+li {
+	margin-left: 									30px;
+}
+
+p,
+dl,
+hr,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ol,
+ul,
+pre,
+table,
+address,
+fieldset {
+	margin-bottom: 									20px;
+}
+
+table {
+	border-collapse: 								collapse;
+	border-spacing: 								0;
+}
+
+
+
+
+
+
+
+
+
+
+			
+			*{
+				-moz-border-radius:	0px !important;
+				-webkit-border-radius: 0px !important;
+
+			}
+		
+			body{
+				margin:0px;
+                padding:0px;
+
+			}
+			
+			
+			/* START DOC */
+			#pdf-document{
+				width: 700px;
+				margin-left:auto;
+				margin-right:auto;
+			}
+			table tr.document-heading th{
+				border-bottom: 2px solid #F0F0F0;
+				padding: 10px;
+				text-align:left;
+				text-transform:uppercase;
+				font-size:18px;
+			}
+			table tr.document-heading th.label{
+				text-align: right;
+				color:#ccc;
+			}
+			table tr.document-information th{
+				padding-top: 15px;
+			}
+			table tr.document-information th div{
+				/*background: #F6F6F6;*/
+				padding: 10px;
+				padding-left: 20px;
+				color: #999999;
+				font-size: 12px;
+				font-family: sans-serif;
+				text-align:left;
+				margin-bottom:20px;
+			}
+			table tr th.billing_information span.col{
+				display:inline-block;
+				width:33.3%;
+			}
+			table tr th.billing_information p{
+				line-height: 20px;
+				display: block;
+				padding: 0px;
+				margin: 0px;
+				font-size:10px;
+			}
+			table tr th.billing_information strong{
+				display: block;
+				padding-bottom: 5px;
+				color:#000;
+			}
+			table tr th.invoice_information{
+				width: 10%;
+			}
+			table tr th.invoice_information div{
+				padding:7px;
+				text-align:center;
+				margin-left:3px;
+			}
+			table tr th.invoice_information div#invoice_id{
+				font-size:22px;
+				padding:10px;
+				margin-bottom:5px;
+				color:#0088cc;
+			}
+			table tr th.invoice_information div#due-date strong{
+				color:#000;
+			}
+			
+			table tr td table#invoice-items{
+				margin: 0px;
+				width: 100%;
+				padding:0px;
+				
+			}
+			table tr td table#invoice-items tr th{
+				padding:5px;
+				color:#666;
+				background:#666;
+				color:#fff;
+			}
+			table tr td table#invoice-items tr td{
+				border-bottom:1px dotted #ccc;
+				padding:10px;
+				text-align:center;
+			}
+			table tr td table#invoice-items tr td.align-left{
+				text-align:left;
+			}
+			table tr.totals td{
+				padding:0px;
+				padding-top:5px;
+				border-top:5px solid #666;
+				border-bottom:1px dotted #333;
+				padding-bottom:30px;
+				text-align:right;
+			}
+			table tr.totals td table{
+				margin: 0px;
+				width: 100%;
+				padding:0px;
+			}
+			table tr.totals td div{
+				padding:10px;
+				display:inline-block;
+				width:200px;
+				background:#0088cc;
+				color:#a4caff;
+				
+				text-transform: uppercase;
+			}
+			table tr.totals td div strong{
+				color:#fff;
+			}
+			table tr.totals table tr th{
+				font-size:14px;
+			}
+			table tr.totals table tr th#tax-included{
+				text-align: right;
+				padding-right:20px;
+				text-transform: uppercase;
+				color:#666;
+			}
+			table tr.totals table tr th#tax-included strong{
+				color:#000;
+			}
+			table tr.totals th div strong{
+				padding-left:20px;
+			}
+			
+			
+			
+			
+			.Items div.header{
+				background: #999;
+				-moz-border-radius:	15px;
+				-webkit-border-radius: 15px;
+				padding: 5px;
+				padding-left: 10px;
+				padding-right: 10px;
+				text-transform: uppercase;
+				color: #fff;
+				
+			}
+			.Items div table{
+				margin: 0px;
+				width: 100%;
+				font-size: 10px;
+				font-family: sans-serif;
+				
+			}
+			.Items div table .Amount{
+				text-align: right;
+				width: 80px;
+			}
+			.Items div table .Hours{
+				text-align: center;
+				width: 100px;
+			}
+			.Items div table .Rate{
+				text-align: center;
+				width: 100px;
+			}
+			.Items .Items{
+				background: none;
+				padding-top: 20px;
+				padding-bottom: 10px;
+				border-bottom: dashed 1px #666;
+				
+			}
+
+			.ItemContainer div{
+				padding: 0px;
+			}
+			
+			.Items .Items{
+				-moz-border-radius:	0px !important;
+				-webkit-border-radius: 0px !important;		
+			}
+			.Items .Tbl{
+				margin: 0px;
+				width: 100%;
+				font-size: 10px;
+				font-family: sans-serif;
+				color:#000;
+				
+			}
+
+			.Items .Tbl .Amount{
+				text-align: right;
+				width: 80px;
+
+			}
+			.Items .Tbl .Hours{
+				text-align: center;
+				width: 100px;
+			}
+			.Items .Tbl .Rate{
+				text-align: center;
+				width: 100px;
+			}
+			.Items .Tbl strong.green{
+				color: #009933;
+				font-weight: normal;
+			}
+			.Items .Tbl strong.red{
+				color: #990000;
+				font-weight: normal;
+			}
+			.Items .Tbl strong.grey{
+				color: #666;
+				font-weight: normal;
+			}
+			
+			.Totals{
+				margin-top: 20px;
+			}
+
+			.Totals td{
+				text-align: right;
+				
+			}
+			.Totals td div{
+				display: inline;
+				padding: 0px;
+				padding-left: 20px;
+				color: #000;
+			}
+			.Totals td div strong{
+				color: #fff;
+				padding-left: 10px;
+			}
+			.Items .Payment{
+				text-transform: none;
+				margin-top: 10px;
+				padding: 20px;
+				background-color: #EAEAEA;
+				color: #666;
+				font-size: 10px;
+				font-family: sans-serif;
+			}
+			.Items .Payment h5{
+				margin: 0px;
+				padding: 0px;
+				padding-bottom: 0px;
+				font-size: 12px;
+				font-weight: normal;
+				font-family: sans-serif;
+			}
+			.Items .Payment strong{
+				margin-top: 20px;
+				display: block;
+			}
+			.Items .Payment p{
+				margin: 5px;
+				margin-left: 0px;
+			}
+			.Items .Payment a{
+				color:#666;
+			}
+			.Items .ItemContainer{
+				background: none;
+				height: 340px;
+			}
+			.Items  .Payment h5.Notice{
+				text-align:center;
+				margin-top:20px
+			}
+			.Items div.Foot{
+				background: none;
+				color:#666;
+				padding:0px;
+				padding-top:10px;
+                font-size:12px;
+
+			}
+			.Items div.Foot span{
+				float:right;
+			}
+			.Items div.Foot span a{
+				color:#666;
+				text-decoration:none;
+			}

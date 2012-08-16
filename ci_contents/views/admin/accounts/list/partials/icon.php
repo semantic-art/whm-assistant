@@ -1,0 +1,1 @@
+<img src="http://www.google.com/s2/favicons?domain=<?=$website;?>" rel="tooltip" data-placement="right" data-title="http://<?=$website;?>"/>

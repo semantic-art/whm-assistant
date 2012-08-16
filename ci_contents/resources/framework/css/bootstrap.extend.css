@@ -1,0 +1,151 @@
+/* body padding for twitter navbar */
+body.navbar-padding{
+	padding-top:80px;
+	background-position:0 40px;
+}
+body{
+	font-size: 12px;
+	background:#f3f3f3;
+	
+}
+
+
+/*
+*{
+	-webkit-border-radius: 0px;
+	border-radius:0px !important;
+}
+*/
+
+
+table tr:last-child a.down{
+	
+}
+table tr:first-child a.up{
+	
+}
+
+
+
+html, body {
+	height: 100% !important;
+}
+
+.wrapper {
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+	margin: 0 auto -60px; /* the bottom margin is the negative value of the footer's height */
+	background:#fff;
+		border-left:1px solid #ddd;
+	border-right:1px solid #ddd;
+}
+.foot, .push {
+	height: 60px; /* .push must be the same height as .footer */
+	overflow:hidden;
+}
+
+.breadcrumb.footer{
+	
+}
+div.wrap{
+	margin-left:auto;
+	margin-right:auto;
+	width:1000px;
+	height: 100%;
+}
+
+
+.btn-toolbar.well-small{
+	margin-bottom:35px;
+}
+
+.nav-tabs{
+	margin-bottom:0px;
+}
+
+
+
+.file-drop{
+	background:#eee;
+	border:1px solid #ddd;
+	padding:10px;
+	border-radius:5px;
+	min-height:40px;
+}
+.file-drop a{
+	color:#666;
+}
+
+
+.model-toolbar{
+	background:#eee;
+	border-radius: 5px 5px 0px 0px;
+	border:1px solid #ddd;
+}
+
+
+/* Background fabrics */
+.fabric-grid{
+	background-image: url(../img/grid-18px-masked.png);
+	background-repeat: repeat-x;
+}
+.fabric-light{
+	background-image: url(../img/fabric-light.png);
+}
+.fabric-dark{
+	background-image: url(../img/fabric-dark.png);
+}
+
+/* Remove shadows from element */
+.no-shadow{
+	-webkit-box-shadow:none;
+     -moz-box-shadow:none;
+          box-shadow:none;
+}
+
+/* Notification modal disclaimer text */
+.modal-disclaimer{
+	text-align:center;
+	font-size:10px;
+	text-transform:uppercase;
+	color:#666;
+}
+
+/* CSS3 Indicator */
+div.indicator{
+  position: relative;
+  width: 54px;
+  height: 54px;
+  display: inline-block;
+  
+}
+div.indicator div {
+  width: 12%;
+  height: 26%;
+  background: #666;
+  position: absolute;
+  left: 44.5%;
+  top: 37%;
+  opacity: 0;
+  -webkit-animation: fade 1s linear infinite;
+  -webkit-border-radius: 50px;
+  -webkit-box-shadow: 0 0 3px rgba(0,0,0,0.2);
+  
+}
+div.indicator div.bar1 {-webkit-transform:rotate(0deg) translate(0, -142%); -webkit-animation-delay: 0s;}    
+div.indicator div.bar2 {-webkit-transform:rotate(30deg) translate(0, -142%); -webkit-animation-delay: -0.9167s;}
+div.indicator div.bar3 {-webkit-transform:rotate(60deg) translate(0, -142%); -webkit-animation-delay: -0.833s;}
+div.indicator div.bar4 {-webkit-transform:rotate(90deg) translate(0, -142%); -webkit-animation-delay: -0.75s;}
+div.indicator div.bar5 {-webkit-transform:rotate(120deg) translate(0, -142%); -webkit-animation-delay: -0.667s;}
+div.indicator div.bar6 {-webkit-transform:rotate(150deg) translate(0, -142%); -webkit-animation-delay: -0.5833s;}
+div.indicator div.bar7 {-webkit-transform:rotate(180deg) translate(0, -142%); -webkit-animation-delay: -0.5s;}
+div.indicator div.bar8 {-webkit-transform:rotate(210deg) translate(0, -142%); -webkit-animation-delay: -0.41667s;}
+div.indicator div.bar9 {-webkit-transform:rotate(240deg) translate(0, -142%); -webkit-animation-delay: -0.333s;}
+div.indicator div.bar10 {-webkit-transform:rotate(270deg) translate(0, -142%); -webkit-animation-delay: -0.25s;}
+div.indicator div.bar11 {-webkit-transform:rotate(300deg) translate(0, -142%); -webkit-animation-delay: -0.1667s;}
+div.indicator div.bar12 {-webkit-transform:rotate(330deg) translate(0, -142%); -webkit-animation-delay: -0.0833s;}
+@-webkit-keyframes fade {
+  from {opacity: 1;}
+  to {opacity: 0.25;}
+}
