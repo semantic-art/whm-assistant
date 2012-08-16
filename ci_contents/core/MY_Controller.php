@@ -15,6 +15,10 @@ class private_controller extends MY_Controller{
 		global $application_folder;
 		if(!@file_exists($application_folder.'/config/settings.php')){
 			redirect('admin/installation');
+		}else{
+			if(!isSet($this->settings['installed'])){
+				redirect('admin/installation');
+			}
 		}
 	}
 }
@@ -26,6 +30,10 @@ class public_controller extends MY_Controller{
 		global $application_folder;
 		if(!@file_exists($application_folder.'/config/settings.php')){
 			redirect('admin/installation');
+		}else{
+			if(!isSet($this->settings['installed'])){
+				redirect('admin/installation');
+			}
 		}
 	}
 }
