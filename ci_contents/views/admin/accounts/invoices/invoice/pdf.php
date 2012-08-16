@@ -8,7 +8,7 @@
 	
       	<table id="pdf-document">
 			<tr class="document-heading">
-				<th class="company"><?=$this->settings['company']['name'];?></th>
+				<th class="company">Example company</th>
 				<th class="label">Tax Invoice</th>
 			</tr>
 			<tr class="document-information">
@@ -84,7 +84,7 @@
 						<tr>
 							<td style="padding-right:10px;">
 								<strong>Checks & Money Orders</strong> 
-								Please make cheques & money orders payable to <?=$this->settings['company']['name'];?>.
+								Please make cheques & money orders payable to example company.
 								<br/>
 								<br/>
 							</td>
@@ -123,11 +123,11 @@
 					</table>
 					<table width="100%">
 						<tr>
-							<th colspan="2" align="center">Thank you for choosing <?=$this->settings['company']['name'];?></th>
+							<th colspan="2" align="center">Thank you for choosing example company</th>
 						</tr>
 						<tr>
 							<td>ABN: 00 000 000 00</td>
-							<td align="right">www.<?=$this->settings['company']['website'];?></td>
+							<td align="right">www.example.com</td>
 						</tr>
 					</table>
 	      		</td>

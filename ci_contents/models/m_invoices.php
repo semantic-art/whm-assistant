@@ -261,7 +261,7 @@ class m_invoices extends MY_Model {
 		}
 		$this->uncache_invoice($id);
 		$this->load->driver('cache', array('adapter' => 'file'));
-		$filename = 'invoices/invoice-'.$id.'.pdf';
+		$filename = 'invoice-'.$id.'.pdf';
 		if (!$pdf_output=$this->cache->get($filename)){
 			$this->load->model('m_invoice_items');
 			$invoice->items = $this->m_invoice_items->get(array('invoice_id'=>$id));
@@ -293,10 +293,10 @@ class m_invoices extends MY_Model {
 			return FALSE;
 		}
 		$this->load->driver('cache', array('adapter' => 'file'));
-		if (!$pdf_output=$this->cache->get('invoices/invoice-'.$id.'.pdf')){
+		if (!$pdf_output=$this->cache->get('invoice-'.$id.'.pdf')){
 			return TRUE;
 		}
-		if(!$this->cache->delete('invoices/invoice-'.$id.'.pdf')){
+		if(!$this->cache->delete('invoice-'.$id.'.pdf')){
 			return FALSE;
 		}
 		return TRUE;
