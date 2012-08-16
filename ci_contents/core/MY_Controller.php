@@ -12,8 +12,11 @@ class private_controller extends MY_Controller{
 			$this->user->smtp = unserialize($this->user->smtp);
 			$this->user->phone = unserialize($this->user->phone);
 		}
-		if(!isSet($this->settings['installation'])){
-			redirect('admin/installation');
+		global $application_folder;
+		if(!@file_exists($application_folder.'/config/settings.php')){
+			if(!isSet($this->settings['installed'])){
+				redirect('admin/installation');
+			}
 		}
 	}
 }
@@ -22,8 +25,11 @@ class public_controller extends MY_Controller{
 	public function __construct()
 	{
 		parent::__construct();
-		if(!isSet($this->settings['installation'])){
-			redirect('admin/installation');
+		global $application_folder;
+		if(!@file_exists($application_folder.'/config/settings.php')){
+			if(!isSet($this->settings['installed'])){
+				redirect('admin/installation');
+			}
 		}
 	}
 }
@@ -32,8 +38,11 @@ class installer_controller extends MY_Controller{
 	public function __construct()
 	{
 		parent::__construct();
-		if(isSet($this->settings['installation'])){
-			redirect('admin');
+		global $application_folder;
+		if(@file_exists($application_folder.'/config/settings.php')){
+			if(isSet($this->settings['installed'])){
+				redirect('admin');
+			}
 		}
 	}
 }
@@ -42,8 +51,14 @@ class MY_Controller extends CI_Controller{
 	public function __construct()
 	{
 		parent::__construct();
-		global $constant_settings;
-		$this->settings = $constant_settings;
+		global $application_folder;
+		if(@file_exists($application_folder.'/config/settings.php')){
+			include_once($application_folder.'/config/settings.php');
+			$this->settings = $app_settings;
+			if(!is_array($this->settings)){
+				show_error('Settings file is corupted.');
+			}
+		}
 	}
 }
 

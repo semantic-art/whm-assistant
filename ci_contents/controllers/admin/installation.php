@@ -29,6 +29,11 @@ class Installation extends installer_controller {
 		/*
 			Welcome screen
 		*/
+		global $application_folder;
+		$this->load->helper('file');
+		if(!write_file($application_folder.'/config/settings.php','<?php $app_settings = unserialize(urldecode(str_replace(array("<CON","FIG>","</CON"),"","<CONFIG>a%3A0%3A%7B%7D</CONFIG>"))); ?>')){
+			show_error('Unable to create settings.php. Unknown error.');
+		}
 	
 		$this->load->view('admin/installation/welcome/view');
 	}
@@ -155,7 +160,7 @@ class Installation extends installer_controller {
 		$this->load->helper('form');
 		if($this->input->post('submitBTN')){
 			$this->load->helper('file');
-			$config = read_file($application_folder.'/config/constants.php');
+			$config = read_file($application_folder.'/config/settings.php');
 			if($this->input->post('chk_invoices')){
 				$this->settings['modules']['invoices'] = TRUE;
 			}else{
@@ -188,7 +193,7 @@ class Installation extends installer_controller {
 			}
 			$replacement = '<CONFIG>'.urlencode(serialize($this->settings)).'</CONFIG>';
 			$config = preg_replace('|<CONFIG>([^"]*)</CONFIG>|',$replacement,$config,1);
-			if(write_file($application_folder.'/config/constants.php',$config)){
+			if(write_file($application_folder.'/config/settings.php',$config)){
 				redirect('admin/installation/admin');
 			}
 		}
@@ -227,11 +232,11 @@ class Installation extends installer_controller {
 			);
 			if($this->m_users->add($data)){
 				$this->load->helper('file');
-				$config = read_file($application_folder.'/config/constants.php');
-				$this->settings['installation'] = TRUE;
+				$config = read_file($application_folder.'/config/settings.php');
+				$this->settings['installed'] = TRUE;
 				$replacement = '<CONFIG>'.urlencode(serialize($this->settings)).'</CONFIG>';
 				$config = preg_replace('|<CONFIG>([^"]*)</CONFIG>|',$replacement,$config,1);
-				if(write_file($application_folder.'/config/constants.php',$config)){
+				if(write_file($application_folder.'/config/settings.php',$config)){
 					redirect('admin');
 				}
 			}
