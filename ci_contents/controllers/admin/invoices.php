@@ -492,12 +492,12 @@ class Invoices extends private_controller {
 			$this->load->library('email');
 			$config['protocol'] = 'smtp';
 			$config['mailtype'] = 'html';
-			$config['smtp_host'] = '';
-			$config['smtp_user'] = '';
-			$config['smtp_pass'] = '';
-			$config['smtp_port'] = '26';
+			$config['smtp_host'] = $this->user->smtp['host'];
+			$config['smtp_user'] = $this->user->smtp['username'];
+			$config['smtp_pass'] = $this->user->smtp['password'];
+			$config['smtp_port'] = $this->user->smtp['port'];
 			$this->email->initialize($config);
-			$this->email->from('brad.martin@semanticart.com.au', 'semanticart');
+			$this->email->from($this->user->email,$this->user->first_name.' '.$this->user->last_name);
 			if($contact){
 				$this->email->to($contact->email);
 			}else{
@@ -505,7 +505,7 @@ class Invoices extends private_controller {
 			}
 			$this->email->subject($this->input->post('str_subject'));
 			$this->email->message($this->input->post('txt_email'));
-			$this->email->attach($application_folder.'/cache/invoices/invoice-'.$invoice_id.'.pdf');
+			$this->email->attach($application_folder.'/cache/invoice-'.$invoice_id.'.pdf');
 			$this->load->model('m_correspondence');
 			$data = array(
 				'contact_id'=>$this->input->post('opt_sendto'),
@@ -516,14 +516,14 @@ class Invoices extends private_controller {
 			if(!$this->email->send()){
 				$data['status'] = 'failed';
 				$i=$this->m_correspondence->add($data);
-				show_error('Email settings incorrect. Could not send email.');
+				show_error('Your mail settings are incorrect.');
 			}
 			$i=$this->m_correspondence->add($data);
 			redirect(base_url().'admin/accounts/'.$id.'/invoices/'.$invoice_id);
 		}
 		$this->load->helper('file');
 		$this->load->helper('number');
-		$this->data->invoice->size = get_file_info($application_folder.'/cache/invoices/invoice-'.$invoice_id.'.pdf','size');
+		$this->data->invoice->size = get_file_info($application_folder.'/cache/invoice-'.$invoice_id.'.pdf','size');
 		$this->data->invoice->size = byte_format($this->data->invoice->size['size']);
 		
 		$this->load->model('m_users');

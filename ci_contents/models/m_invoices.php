@@ -259,7 +259,7 @@ class m_invoices extends MY_Model {
 		if(!$id||!$invoice){
 			return FALSE;
 		}
-		$this->uncache_invoice($id);
+		
 		$this->load->driver('cache', array('adapter' => 'file'));
 		$filename = 'invoice-'.$id.'.pdf';
 		if (!$pdf_output=$this->cache->get($filename)){
@@ -273,7 +273,7 @@ class m_invoices extends MY_Model {
 			$this->pdf_processing->set_html($this->load->view('admin/accounts/invoices/invoice/pdf.php',$invoice,TRUE));
 			$this->pdf_processing->render();
 			$pdf_output = $this->pdf_processing->output();
-			$this->cache->save('invoices/invoice-'.$id.'.pdf',$pdf_output,31536000); // save for 1 year
+			$this->cache->save('invoice-'.$id.'.pdf',$pdf_output,31536000); // save for 1 year
 		}
 		return $pdf_output;
 	}

@@ -7,7 +7,13 @@ class private_controller extends MY_Controller{
 		if(!$this->session->userdata('user')){
 			redirect(base_url().'admin');
 		}else{
-			$this->user->id = '1';
+			$this->load->model('m_users');
+			$this->user = $this->m_users->get(array('id'=>$this->session->userdata('user')));
+			$this->user->smtp = unserialize($this->user->smtp);
+			$this->user->phone = unserialize($this->user->phone);
+		}
+		if(!isSet($this->settings['installation'])){
+			redirect('admin/installation');
 		}
 	}
 }
