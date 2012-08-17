@@ -60,7 +60,7 @@
 											$field = array(
 												'name'=>'str_first_name',
 												'id'=>'str_first_name',
-												'value'=>set_value('str_first_name',''),
+												'value'=>set_value('str_first_name',$this->settings['account']['first_name']),
 												'placeholder'=>'First name',
 												'maxlength'=>'50',
 												'class'=>'span2'
@@ -71,7 +71,7 @@
 											$field = array(
 												'name'=>'str_last_name',
 												'id'=>'str_last_name',
-												'value'=>set_value('str_last_name',''),
+												'value'=>set_value('str_last_name',$this->settings['account']['last_name']),
 												'placeholder'=>'Last name',
 												'maxlength'=>'50',
 												'class'=>'span2'
@@ -89,7 +89,7 @@
 											$field = array(
 												'name'=>'str_email',
 												'id'=>'str_email',
-												'value'=>set_value('str_email',''),
+												'value'=>set_value('str_email',$this->settings['account']['email']),
 												'placeholder'=>'Email address',
 												'maxlength'=>'255',
 												'class'=>'span4'

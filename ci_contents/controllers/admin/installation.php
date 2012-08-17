@@ -34,8 +34,37 @@ class Installation extends installer_controller {
 		if(!write_file($application_folder.'/config/settings.php','<?php $app_settings = unserialize(urldecode(str_replace(array("<CON","FIG>","</CON"),"","<CONFIG>a%3A0%3A%7B%7D</CONFIG>"))); ?>')){
 			show_error('Unable to create settings.php. Unknown error.');
 		}
-	
+		$this->load->library('form_validation');
+		$this->form_validation->set_rules('email', 'Email', 'required|valid_email|callback__uti_authenticate');
+		$this->form_validation->set_rules('password', 'Password', 'required|min_length[8]|max_length[20]');
+		if($this->form_validation->run()){
+			redirect('admin/installation/terms');
+		}
 		$this->load->view('admin/installation/welcome/view');
+	}
+	
+	public function _uti_authenticate($str)
+	{
+		$this->load->library('xmlrpc');
+		$this->xmlrpc->server('http://semanticart.com.au/whm-assistant/api', 80);
+		$this->xmlrpc->method('authorise');
+		$request = array($this->input->post('email'),md5($this->input->post('password')));
+		$this->xmlrpc->request($request);
+		if($this->xmlrpc->send_request()){
+			global $application_folder;
+			$response = $this->xmlrpc->display_response();
+			$this->load->helper('file');
+			$config = read_file($application_folder.'/config/settings.php');
+			$this->settings['account'] = $response;
+			$replacement = '<CONFIG>'.urlencode(serialize($this->settings)).'</CONFIG>';
+			$config = preg_replace('|<CONFIG>([^"]*)</CONFIG>|',$replacement,$config,1);
+			if(!write_file($application_folder.'/config/settings.php',$config)){
+				show_error('Unable to write to settings.php');
+			}
+			return TRUE;
+		}
+		$this->form_validation->set_message('_uti_loginUser','The login details for "'.$str.'" are incorrect. Authorisation has failed.');
+		return FALSE;
 	}
 	
 	/**

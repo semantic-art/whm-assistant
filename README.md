@@ -10,7 +10,10 @@ whm-assistant is still under construction and highly unstable.
 Installation
 ------------
 
+Goto http://semanticart.com.au/whm-assistant/ to register an account as you will need these account details to authorise the installation.
+
 Download and place folder on server (apache & php5+). To access admin goto /admin eg semanticart.com.au/whm-assistant/admin
+
 
 
 Adding a website
