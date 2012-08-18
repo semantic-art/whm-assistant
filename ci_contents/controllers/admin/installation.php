@@ -112,22 +112,19 @@ class Installation extends installer_controller {
 			$this->load->database($dsn);
 			$this->load->dbutil();
 			if($this->dbutil->database_exists($this->input->post('str_database'))){
+				$this->settings['db']['hostname'] = $this->input->post('str_host');
+				$this->settings['db']['username'] = $this->input->post('str_username');
+				$this->settings['db']['password'] = $this->input->post('str_password');
+				$this->settings['db']['dbprefix'] = $this->input->post('str_prefix');
+				$this->settings['db']['database'] = $this->input->post('str_database');
 				$this->load->helper('file');
-				$dbconfig = read_file($application_folder.'/config/database.php');
-				$replacement = '<DB-HOST>'.$this->input->post('str_host').'</DB-HOST>';
-				$dbconfig = preg_replace('|<DB-HOST>([^"]*)</DB-HOST>|',$replacement,$dbconfig,1);
-				$replacement = '<DB-USER>'.$this->input->post('str_username').'</DB-USER>';
-				$dbconfig = preg_replace('|<DB-USER>([^"]*)</DB-USER>|',$replacement,$dbconfig,1);
-				$replacement = '<DB-PASS>'.$this->input->post('str_password').'</DB-PASS>';
-				$dbconfig = preg_replace('|<DB-PASS>([^"]*)</DB-PASS>|',$replacement,$dbconfig,1);
-				$replacement = '<DB-PREF>'.$this->input->post('str_prefix').'</DB-PREF>';
-				$dbconfig = preg_replace('|<DB-PREF>([^"]*)</DB-PREF>|',$replacement,$dbconfig,1);
-				$replacement = '<DB-BASE>'.$this->input->post('str_database').'</DB-BASE>';
-				$dbconfig = preg_replace('|<DB-BASE>([^"]*)</DB-BASE>|',$replacement,$dbconfig,1);
-				if(write_file($application_folder.'/config/database.php',$dbconfig)){
-					redirect('admin/installation/db_populate');
+				$config = read_file($application_folder.'/config/settings.php');
+				$replacement = '<CONFIG>'.urlencode(serialize($this->settings)).'</CONFIG>';
+				$config = preg_replace('|<CONFIG>([^"]*)</CONFIG>|',$replacement,$config,1);
+				if(!write_file($application_folder.'/config/settings.php',$config)){
+					show_error('Unable to write to settings.php');
 				}
-				show_error('Unable to write to the database.php configuration file.');
+				redirect('admin/installation/db_populate');
 			} 
 			$this->errors->database = TRUE;
 		}

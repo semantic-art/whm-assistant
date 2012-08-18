@@ -42,15 +42,36 @@ $active_group = 'default';
 $active_record = TRUE;
 
 
-
-
-
-$db['default']['hostname'] = str_replace(array('<DB-','</DB-','HOST>'),'','<DB-HOST>localhost</DB-HOST>');
-$db['default']['username'] = str_replace(array('<DB-','</DB-','USER>'),'','<DB-USER></DB-USER>');
-$db['default']['password'] = str_replace(array('<DB-','</DB-','PASS>'),'','<DB-PASS></DB-PASS>');
-$db['default']['database'] = str_replace(array('<DB-','</DB-','BASE>'),'','<DB-BASE></DB-BASE>');
+global $application_folder;
+if(@file_exists($application_folder.'/config/settings.php')){
+	include($application_folder.'/config/settings.php');
+	if(
+		isSet($app_settings['db']['hostname'])&&
+		isSet($app_settings['db']['username'])&&
+		isSet($app_settings['db']['password'])&&
+		isSet($app_settings['db']['database'])&&
+		isSet($app_settings['db']['dbprefix'])
+		){
+		$db['default']['hostname'] = $app_settings['db']['hostname'];
+		$db['default']['username'] = $app_settings['db']['username'];
+		$db['default']['password'] = $app_settings['db']['password'];
+		$db['default']['database'] = $app_settings['db']['database'];
+		$db['default']['dbprefix'] = $app_settings['db']['dbprefix'];
+	}else{
+		$db['default']['hostname'] = 'localhost';
+		$db['default']['username'] = '';
+		$db['default']['password'] = '';
+		$db['default']['database'] = '';
+		$db['default']['dbprefix'] = '';
+	}
+}else{
+	$db['default']['hostname'] = 'localhost';
+	$db['default']['username'] = '';
+	$db['default']['password'] = '';
+	$db['default']['database'] = '';
+	$db['default']['dbprefix'] = '';
+}
 $db['default']['dbdriver'] = 'mysql';
-$db['default']['dbprefix'] = str_replace(array('<DB-','</DB-','PREF>'),'','<DB-PREF></DB-PREF>');
 $db['default']['pconnect'] = TRUE;
 $db['default']['db_debug'] = TRUE;
 $db['default']['cache_on'] = FALSE;
@@ -60,6 +81,10 @@ $db['default']['dbcollat'] = 'utf8_general_ci';
 $db['default']['swap_pre'] = '';
 $db['default']['autoinit'] = TRUE;
 $db['default']['stricton'] = FALSE;
+
+
+
+
 
 
 /* End of file database.php */
