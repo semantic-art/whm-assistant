@@ -10,7 +10,7 @@
  * @link		http://semanticart.com.au
  */
 
-class Initial extends MY_Controller {
+class Initial extends public_Controller {
 
 	public $uc_access = array("1989");
 	
