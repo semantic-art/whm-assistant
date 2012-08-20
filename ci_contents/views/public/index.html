@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Under construction</title>
+		<title>whm-assistant</title>
 		<?=$this->assets->load('_combined.css','framework');?>
 	</head>
 	<body class="fabric-grid">
@@ -11,22 +11,20 @@
 					<form class="form-inline" method="post">
 						<div class="modal" style="position: relative; top: auto; left: auto; margin: 0 auto; margin-top:80px; z-index: 1; max-width: 100%;">
 							<div class="modal-body" style="text-align:center;">
-								<h1 class="lead" style="margin-top:20px; margin-bottom:30px;">Under<strong>Construction</strong></h1>
-								<p style="margin:0px;">This project is currently under construction. <br/>Enter your PIN to access construction area.</p>
+								<p style="margin:0px;">
+									Place your website in the following folder and delete the index.html file to enable your site.
+									
+								</p>
 								<hr/>
-								<? if($this->input->post('pin1')){?>
-									<div class="alert alert-info">
-										<button class="close" data-dismiss="alert">&times;</button>
-										The PIN number you used is incorrect please try again. 
-									</div>
-								<?}?>
 								<div class="well">
-									<input name="pin1" maxlength="1" autofocus type="password" placeholder="" style="width:20px; padding:10px; font-size:20px; text-align:center;"/>
-									<input name="pin2" maxlength="1" type="password" placeholder="" style="width:20px; padding:10px; font-size:20px; text-align:center;"/>
-									<input name="pin3" maxlength="1" type="password" placeholder="" style="width:20px; padding:10px; font-size:20px; text-align:center;"/>
-									<input name="pin4" maxlength="1" type="password" placeholder="" style="width:20px; padding:10px; font-size:20px; text-align:center;"/>
+									<code>./ci_contents/views/public/</code>	
 								</div>
 							</div><!-- End:div.modal-body -->
+							<div class="modal-footer">
+								<a href="<?=base_url();?>billing/" class="btn">Client login</a>
+								<a href="<?=base_url();?>admin/" class="btn btn-primary">Admin login</a>
+								
+							</div>
 						</div><!-- End:div.modal -->
 					</form>
 				</div><!-- End:div.span8 -->
@@ -39,19 +37,5 @@
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script> 
 		<script>window.jQuery || document.write("<script src='<?=$this->assets->url('jQuery-1.7.2.min.js','framework');?>'>\x3C/script>")</script> 
 		<?=$this->assets->load('bootstrap.min.js','framework');?>
-		<script type="text/javascript">
-			jQuery(document).ready(function(){
-				$('input[name=pin1],input[name=pin2],input[name=pin3]').keyup(function(){
-					if($(this).val()!=''){
-						$(this).next('input').focus();
-					}
-				});
-				$('input[name=pin4]').keyup(function(){
-					if($(this).val()!=''){
-						$('form').submit();
-					}
-				});
-			});
-		</script>
 	</body>
 </html>
