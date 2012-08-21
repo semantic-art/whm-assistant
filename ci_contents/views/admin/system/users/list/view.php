@@ -53,12 +53,12 @@
 					<ul class="thumbnails">
 						<?foreach($this->data->users as $user){?>
 							<?if($user->status=='active'){?>
-							<li class="span4">
+							<li class="span4 animated bounceIn">
 								<a href="<?=base_url();?>admin/system/users/<?=$user->id;?>" class="thumbnail" style="text-align:center;">
 									<div style="background-color:#eee;">
-										<img src="http://www.doppelme.com/100/TRANSPARENT/<?=$user->avatar;?>/crop.png" alt="">
+										<img height="100px" src="http://www.doppelme.com/100/TRANSPARENT/<?=$user->avatar;?>/crop.png" alt="">
 									</div>
-									<h3><?=$user->first_name;?> <?=$user->last_name;?></h3>
+									<h3 class="animated fadeInDown"><?=$user->first_name;?> <?=$user->last_name;?></h3>
 								</a>
 							</li>
 							<?}?>
@@ -68,12 +68,12 @@
 					<ul class="thumbnails">
 						<?foreach($this->data->users as $user){?>
 							<?if($user->status=='inactive'){?>
-							<li class="span4">
+							<li class="span4 animated bounceIn">
 								<a href="<?=base_url();?>admin/system/users/<?=$user->id;?>" class="thumbnail" style="text-align:center;">
 									<div style="background-color:#eee;">
 										<img src="http://www.doppelme.com/100/TRANSPARENT/<?=$user->avatar;?>/crop.png" alt="">
 									</div>
-									<h3><?=$user->first_name;?> <?=$user->last_name;?></h3>
+									<h3 class="animated fadeInDown"><?=$user->first_name;?> <?=$user->last_name;?></h3>
 								</a>
 							</li>
 							<?}?>
