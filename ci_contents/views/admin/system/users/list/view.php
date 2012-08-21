@@ -47,62 +47,40 @@
 			</div><!-- End:div.row -->
 			<div class="row">
 				<div class="span12">
-					<table class="table table-bordered table-striped">
-						<thead>
-							<tr>
-								<th width="50">&nbsp;</th>
-								<th>User</th>
-								<th width="340">Email</th>
-								<th width="100">Status</th>
-								<th width="80"></th>
-							</tr>
-						</thead>
-						<tbody>
-							<?if($this->data->users){?>
-							<?foreach($this->data->users as $user){?>
-								<tr>
-									<td style="vertical-align:middle; text-align:center;">
-										<img src="http://www.doppelme.com/30/TRANSPARENT/<?=$user->avatar;?>/avatar.png" style="height:30px;"/>
-									</td>
-									<td style="vertical-align:middle;">
-										<strong><?=$user->first_name;?> <?=$user->last_name;?></strong>
-									</td>
-									<td style="vertical-align:middle;">
-										<?=$user->email;?>
-									</td>
-									<td style="vertical-align:middle;">
-										<?if($user->status=='active'){?>
-											<span class="label label-success" style="display:block; text-align:center; line-height:20px;">
-												active
-											</span>
-										<?}else if($user->status=='inactive'){?>
-											<span class="label" style="display:block; text-align:center; line-height:20px;">
-												inactive
-											</span>
-										<?}?>
-									</td>
-									<td style="vertical-align:middle; text-align:center;">
-										<div class="btn-group pull-right">
-											<a href="<?=base_url();?>admin/system/users/<?=$user->id;?>" class="btn">
-												Edit
-											</a>
-											<a href="<?=base_url();?>admin/system/users/delete/<?=$user->id;?>" class="btn">
-												<i class="icon-trash"></i>
-											</a>
-										</div>
-									</td>
-								</tr>
+				
+				<?if($this->data->users){?>
+					<h4 style="border-bottom:1px solid #ccc; margin-bottom:20px; padding-bottom:10px;">Current staff</h4>
+					<ul class="thumbnails">
+						<?foreach($this->data->users as $user){?>
+							<?if($user->status=='active'){?>
+							<li class="span4">
+								<a href="<?=base_url();?>admin/system/users/<?=$user->id;?>" class="thumbnail" style="text-align:center;">
+									<div style="background-color:#eee;">
+										<img src="http://www.doppelme.com/100/TRANSPARENT/<?=$user->avatar;?>/crop.png" alt="">
+									</div>
+									<h3><?=$user->first_name;?> <?=$user->last_name;?></h3>
+								</a>
+							</li>
 							<?}?>
-							<?}else{?>
-								<tr>
-									<td colspan="5" style="text-align:center; padding:50px;">
-										No Users found...
-									</td>
-								</tr>
+						<?}?>
+					</ul>
+					<h4 style="border-bottom:1px solid #ccc; margin-bottom:20px; padding-bottom:10px;">Former staff</h4>
+					<ul class="thumbnails">
+						<?foreach($this->data->users as $user){?>
+							<?if($user->status=='inactive'){?>
+							<li class="span4">
+								<a href="<?=base_url();?>admin/system/users/<?=$user->id;?>" class="thumbnail" style="text-align:center;">
+									<div style="background-color:#eee;">
+										<img src="http://www.doppelme.com/100/TRANSPARENT/<?=$user->avatar;?>/crop.png" alt="">
+									</div>
+									<h3><?=$user->first_name;?> <?=$user->last_name;?></h3>
+								</a>
+							</li>
 							<?}?>
-						</tbody>
-					</table>
-					<?=$this->pagination->create_links();?>
+						<?}?>
+					</ul>
+				<?}?>
+				<?=$this->pagination->create_links();?>
 				</div>
 			</div><!-- End:div.row -->			
 				
