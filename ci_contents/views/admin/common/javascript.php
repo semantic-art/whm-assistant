@@ -3,23 +3,21 @@
 <![endif]-->
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script> 
 <script>window.jQuery || document.write("<script src='<?=$this->assets->url('jQuery-1.7.2.min.js','framework');?>'>\x3C/script>")</script> 
+
 <?=$this->assets->load('bootstrap.min.js','framework');?>
-
-
-
-
-
-<?=$this->assets->load('prettify.js','framework');?>
-<?=$this->assets->load('bootstrap.datepicker.js','framework');?>
-<?=$this->assets->load('bootstrap.colorpicker.js','framework');?>
-<?=$this->assets->load('wysiwyg5.js','framework');?>
-<?=$this->assets->load('bootstrap.wysiwyg.js','framework');?>
-
-
-
-
-<?=$this->assets->load('highcharts.js','framework');?>
-<?=$this->assets->load('global.js','admin');?>
-
-
-
+<?
+	if(!isSet($javascript_dependencies)||!is_array($javascript_dependencies)){
+		$javascript_dependencies = array(
+			'bootstrap.component.prettify.js'=>'framework',
+			'bootstrap.component.datepicker.js'=>'framework',
+			'bootstrap.component.colorpicker.js'=>'framework',
+			'bootstrap.component.wysiwyg5.js'=>'framework',
+			'bootstrap.component.wysiwyg.js'=>'framework',
+			'global.js'=>'admin'
+		);
+	}
+	foreach($javascript_dependencies as $script=>$folder){
+		echo $this->assets->load($script,$folder);
+	}	
+	
+?>
