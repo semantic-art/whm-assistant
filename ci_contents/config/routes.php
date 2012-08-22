@@ -91,10 +91,10 @@ $route['admin/accounts/(:num)/corrospondence'] = "admin/corrospondence/index/$1"
 
 
 /* USERS */
-$route['admin/system/users'] = "admin/users/index";
-$route['admin/system/users/add'] = "admin/users/add";
-$route['admin/system/users/delete/(:num)'] = "admin/users/delete/$1";
-$route['admin/system/users/(:num)'] = "admin/users/edit/$1";
+$route['admin/utilities/users'] = "admin/users/index";
+$route['admin/utilities/users/add'] = "admin/users/add";
+$route['admin/utilities/users/delete/(:num)'] = "admin/users/delete/$1";
+$route['admin/utilities/users/(:num)'] = "admin/users/edit/$1";
 
 
 /* End of file routes.php */

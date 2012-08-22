@@ -30,13 +30,13 @@ class Users extends Private_Controller {
 		$this->load->model('m_users');
 		$this->data->total_users = $this->m_users->tally();
 		$this->load->library('pagination');
-		$config['base_url'] = base_url().'admin/system/users/?';
+		$config['base_url'] = base_url().'admin/utilities/users/?';
 		$config['per_page'] = 20; 
 		if($this->input->get('f')){
 			if($this->data->total_users<1){
-				redirect(base_url().'admin/system/users');
+				redirect(base_url().'admin/utilities/users');
 			}
-			$config['base_url'] = base_url().'admin/system/users/?f='.$this->input->get('f');
+			$config['base_url'] = base_url().'admin/utilities/users/?f='.$this->input->get('f');
 			$config['total_rows'] = $this->m_users->tally(array('status'=>$this->input->get('f')));
 		}else{
 			$config['total_rows'] = $this->m_users->tally();
@@ -48,7 +48,7 @@ class Users extends Private_Controller {
 			$this->data->users = $this->m_users->get(array('sort_by'=>'id','limit'=>$config['per_page'],'offset'=>$this->input->get('p')));
 		}
 		
-		$this->load->view('admin/system/users/list/view');
+		$this->load->view('admin/utilities/users/list/view');
 	}
 	
 	/**
@@ -93,12 +93,12 @@ class Users extends Private_Controller {
 				if($this->input->post('chk_send_welcome')){
 					exit('show welcome email');
 				}
-				redirect(base_url().'admin/system/users/'.$insert_id);
+				redirect(base_url().'admin/utilities/users/'.$insert_id);
 			}else{
 				show_error('record could not entered.');
 			}
 		}
-		$this->load->view('admin/system/users/add/view');
+		$this->load->view('admin/utilities/users/add/view');
 	}
 	
 	/**
@@ -119,15 +119,15 @@ class Users extends Private_Controller {
 		$this->load->model('m_users');
 		$this->data->user = $this->m_users->get(array('id'=>$id));
 		if(!$this->data->user){
-			redirect(base_url().'admin/system/users/');
+			redirect(base_url().'admin/utilities/users/');
 		}
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('confirmBTN','confirmBTN','required');
 		if($this->form_validation->run()){
 			$this->m_users->delete(array('id'=>$id));
-			redirect(base_url().'admin/system/users');
+			redirect(base_url().'admin/utilities/users');
 		}
-		$this->load->view('admin/system/users/delete/view');
+		$this->load->view('admin/utilities/users/delete/view');
 	}
 	
 	
@@ -144,7 +144,7 @@ class Users extends Private_Controller {
 		$this->load->library('form_validation');
 		$this->data->user = $this->m_users->get(array('id'=>$id));
 		if(!$this->data->user){
-			redirect(base_url().'admin/system/users');
+			redirect(base_url().'admin/utilities/users');
 		}
 		$this->data->user->phone = unserialize($this->data->user->phone);
 		$this->data->user->smtp = unserialize($this->data->user->smtp);
@@ -178,9 +178,9 @@ class Users extends Private_Controller {
 				$data['password'] = md5($this->input->post('str_password'));
 			}
 			$this->m_users->update($data);
-			redirect(base_url().'admin/system/users/'.$id);
+			redirect(base_url().'admin/utilities/users/'.$id);
 		}
-		$this->load->view('admin/system/users/edit/view');
+		$this->load->view('admin/utilities/users/edit/view');
 	}
 
 }

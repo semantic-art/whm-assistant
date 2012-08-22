@@ -26,19 +26,19 @@
 				<div class="span12">
 						<div class="btn-toolbar well well-small">
 							<div class="btn-group">
-								<a href="<?=base_url();?>admin/system/users/add" class="btn btn-primary">
+								<a href="<?=base_url();?>admin/utilities/users/add" class="btn btn-primary">
 									<i class="icon-user icon-white"></i>
 									Add a user
 								</a>
 							</div>
 							<div class="btn-group pull-right">
-								<a href="<?=base_url();?>admin/system/users" class="btn<?if(!isSet($_GET['f'])){echo" active";}?>">
+								<a href="<?=base_url();?>admin/utilities/users" class="btn<?if(!isSet($_GET['f'])){echo" active";}?>">
 									All
 								</a>
-								<a href="<?=base_url();?>admin/system/users/?f=active" class="btn<?if(isSet($_GET['f'])&&$_GET['f']=='active'){echo" active";}?>">
+								<a href="<?=base_url();?>admin/utilities/users/?f=active" class="btn<?if(isSet($_GET['f'])&&$_GET['f']=='active'){echo" active";}?>">
 									Active
 								</a>
-								<a href="<?=base_url();?>admin/system/users/?f=inactive" class="btn<?if(isSet($_GET['f'])&&$_GET['f']=='inactive'){echo" active";}?>">
+								<a href="<?=base_url();?>admin/utilities/users/?f=inactive" class="btn<?if(isSet($_GET['f'])&&$_GET['f']=='inactive'){echo" active";}?>">
 									Inactive
 								</a>
 							</div>
@@ -54,7 +54,7 @@
 						<?foreach($this->data->users as $user){?>
 							<?if($user->status=='active'){?>
 							<li class="span4 animated bounceIn">
-								<a href="<?=base_url();?>admin/system/users/<?=$user->id;?>" class="thumbnail" style="text-align:center;">
+								<a href="<?=base_url();?>admin/utilities/users/<?=$user->id;?>" class="thumbnail" style="text-align:center;">
 									<div style="background-color:#eee;">
 										<img height="100px" src="http://www.doppelme.com/100/TRANSPARENT/<?=$user->avatar;?>/crop.png" alt="">
 									</div>
@@ -69,7 +69,7 @@
 						<?foreach($this->data->users as $user){?>
 							<?if($user->status=='inactive'){?>
 							<li class="span4 animated bounceIn">
-								<a href="<?=base_url();?>admin/system/users/<?=$user->id;?>" class="thumbnail" style="text-align:center;">
+								<a href="<?=base_url();?>admin/utilities/users/<?=$user->id;?>" class="thumbnail" style="text-align:center;">
 									<div style="background-color:#eee;">
 										<img src="http://www.doppelme.com/100/TRANSPARENT/<?=$user->avatar;?>/crop.png" alt="">
 									</div>

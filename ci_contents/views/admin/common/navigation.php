@@ -118,13 +118,13 @@
 			
 				<?if(isSet($users)){?>
 				<li class="active">
-					<a href="<?=base_url();?>admin/system/users" rel="tooltip" title="User profiles" data-delay="1000" data-placement="bottom">
+					<a href="<?=base_url();?>admin/utilities/users" rel="tooltip" title="User profiles" data-delay="1000" data-placement="bottom">
 						<i class="icon-user icon-white"></i>
 					</a>
 				</li>
 				<?}else{?>
 					<li>
-						<a href="<?=base_url();?>admin/system/users/<?=$this->user->id;?>" rel="tooltip" title="Your profile" data-delay="1000" data-placement="bottom">
+						<a href="<?=base_url();?>admin/utilities/users/<?=$this->user->id;?>" rel="tooltip" title="Your profile" data-delay="1000" data-placement="bottom">
 							<i class="icon-user icon-white"></i>
 						</a>
 					</li>	

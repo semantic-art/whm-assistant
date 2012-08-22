@@ -22,7 +22,7 @@
 						<hr/>
 						<p>
 							<input name="confirmBTN" type="submit" class="btn btn-danger btn-large" value="Delete user"/>
-							<a class="btn btn-large" href="<?=base_url();?>admin/system/users">Cancel</a>
+							<a class="btn btn-large" href="<?=base_url();?>admin/utilities/users">Cancel</a>
 						</p>
 					</div>					
 				</div><!-- End:div.modal-body -->
