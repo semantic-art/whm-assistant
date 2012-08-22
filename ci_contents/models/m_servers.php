@@ -64,6 +64,11 @@ class m_servers extends MY_Model {
 			'type'=>'VARCHAR',
 			'constraint'=>255,
 			'default'=>'a:5:{s:9:"provision";b:0;s:7:"suspend";b:0;s:6:"delete";b:0;s:14:"update_package";b:0;s:5:"usage";b:0;}'
+			),
+		'properties'=>array(
+			'type'=>'VARCHAR',
+			'constraint'=>255,
+			'default'=>'a:3:{s:9:"bandwidth";i:0;s:9:"diskspace";i:0;s:16:"maximum-accounts";b:0;}'
 			)
 	);
 	
