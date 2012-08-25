@@ -376,7 +376,7 @@ class Invoices extends private_controller {
 		*/
 		$this->load->library('pdf_processing');
 		$this->pdf_processing->newpdf();
-		$this->pdf_processing->set_html($this->load->view('admin/accounts/invoices/utilities/statement/pdf.php','',TRUE));
+		$this->pdf_processing->set_html($this->load->view('admin/templates/reports/invoices-statement/pdf.php','',TRUE));
 		$this->pdf_processing->render();
 		$this->output
 		->set_content_type('pdf')
