@@ -100,7 +100,8 @@
 								</div><!-- end:div.control-group -->
 								<div class="control-group">
 									<label class="control-label">Password</label>
-									<div class="controls">
+									<div class="controls" style="position:relative;">
+										<span class="label label-important hide" id="password_strenght" style="position:absolute; right:78px; top:7px;">insecure</span>
 										<?
 											$field = array(
 												'name'=>'str_password',
@@ -132,6 +133,33 @@
 				$('#img_avatar').keyup(function(){
 					$(this).parent().find('div.well img').attr('src','http://www.doppelme.com/TRANSPARENT/'+$(this).val()+'/crop.png');
 				});
+				jQuery(document).ready(function(){			
+	$("#str_password").live("keyup",function(){
+		var strongRegex = new RegExp("^(?=.{8,})(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\\W).*$", "g");
+		var mediumRegex = new RegExp("^(?=.{7,})(((?=.*[A-Z])(?=.*[a-z]))|((?=.*[A-Z])(?=.*[0-9]))|((?=.*[a-z])(?=.*[0-9]))).*$", "g");
+		var enoughRegex = new RegExp("(?=.{6,}).*", "g");
+		var meter = $("#password_strenght");
+		if($(this).val().length==0){
+			meter.hide();
+			meter.html('no password');
+		}else if(false == enoughRegex.test($(this).val())) {
+			meter.show();
+			meter.html('insecure');
+			meter.addClass('label-important').removeClass('label-success').removeClass('label-warning');
+		}else if(strongRegex.test($(this).val())){
+			meter.show();
+			meter.html('secure');
+			meter.addClass('label-success').removeClass('label-warning').removeClass('label-important');
+		}else if(mediumRegex.test($(this).val())){
+			meter.show();
+			meter.html('safe');
+			meter.addClass('label-warning').removeClass('label-success').removeClass('label-important');
+		}else{
+			meter.show();
+			meter.addClass('label-important').removeClass('label-success').removeClass('label-warning');
+		}
+	}); 
+});	
 			});
 		</script>
 	</body>
