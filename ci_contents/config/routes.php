@@ -95,7 +95,7 @@ $route['admin/utilities/users'] = "admin/users/index";
 $route['admin/utilities/users/add'] = "admin/users/add";
 $route['admin/utilities/users/delete/(:num)'] = "admin/users/delete/$1";
 $route['admin/utilities/users/(:num)'] = "admin/users/edit/$1";
-
+$route['admin/utilities/users/test_email_connection'] = "admin/users/test_email_connection";
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
