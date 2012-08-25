@@ -27,8 +27,8 @@
 						<div class="btn-toolbar well well-small">
 							<div class="btn-group">
 								<a href="<?=base_url();?>admin/utilities/users/add" class="btn btn-primary">
-									<i class="icon-user icon-white"></i>
-									Add a user
+									<i class="icon-plus icon-white"></i>
+									User
 								</a>
 							</div>
 							<div class="btn-group pull-right">

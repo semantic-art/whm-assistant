@@ -270,7 +270,7 @@ class m_invoices extends MY_Model {
 	
 			$this->load->library('pdf_processing');
 			$this->pdf_processing->newpdf();
-			$this->pdf_processing->set_html($this->load->view('admin/accounts/invoices/invoice/pdf.php',$invoice,TRUE));
+			$this->pdf_processing->set_html($this->load->view('admin/templates/invoice/pdf.php',$invoice,TRUE));
 			$this->pdf_processing->render();
 			$pdf_output = $this->pdf_processing->output();
 			$this->cache->save('invoice-'.$id.'.pdf',$pdf_output,31536000); // save for 1 year
