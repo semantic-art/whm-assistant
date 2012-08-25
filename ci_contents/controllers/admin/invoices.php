@@ -369,11 +369,23 @@ class Invoices extends private_controller {
 	 * @return	void
 	 * @todo	none
 	 **/
-	public function Statement()
+	public function Statement($id=FALSE)
 	{
 		/*
 			PDF statement of due invoices.
 		*/
+		if(!$id){
+			show_404();
+		}
+		$this->load->model('m_accounts');
+		$this->data->account = $this->m_accounts->get(array('id'=>$id));
+		if(!$this->data->account){
+			show_404();
+		}
+		$this->load->model('m_invoices');
+		$this->data->invoices = $this->m_invoices->get(array('account_id'=>$id));
+		
+		
 		$this->load->library('pdf_processing');
 		$this->pdf_processing->newpdf();
 		$this->pdf_processing->set_html($this->load->view('admin/templates/reports/invoices-statement/pdf.php','',TRUE));
